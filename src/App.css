@@ -37,29 +37,63 @@ html, body {
   border-bottom-left-radius: 20px;
   color: hsl(202, 55%, 16%);
 }
-.right-container {
-  flex: 1.1;
-  background-color: hsl(202, 55%, 16%);
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 100px;
-}
 
-.left-container p {
-  display: inline;
+.heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.heading a{
+  font-size: 16px;
+  color: hsl(200, 24%, 40%);
+  margin-left: 100px;
 }
 
 .mortgage-inputs {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 100%;
+}
+
+.amount-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.pound {
+  position: absolute;
+  left: 200px;
+  top: 51%;
+  font-size: 20px;
+  color: hsl(202, 55%, 16%);
+  width: 50px;
+}
+
+#amount {  
+  background: linear-gradient(to right, hsl(202, 86%, 94%) 50px, transparent 50px);
+  font-size: 20px;
+  color: hsl(202, 55%, 16%);
+  padding-left: 70px;
+}
+
+#amount:focus {
+  background: linear-gradient(to right, hsl(61, 70%, 52%) 50px, transparent 50px);
 }
 
 .input-field {
- height: 40px;
- border: .5px solid hsl(200, 26%, 54%);
+ height: 50px;
+ border: 1px solid hsl(200, 24%, 40%);
  border-radius: 6px; 
  margin-bottom: 20px;
+ outline: none; /* Removes default focus outline */
+}
+
+.input-field:hover{
+  cursor: pointer;
+}
+
+.input-field:focus{
+  border: 2px solid hsl(61, 70%, 52%);
 }
 
 .inline-input-container {
@@ -77,8 +111,125 @@ html, body {
   width: 100%;
 }
 
+#term {
+  background: linear-gradient(to left, hsl(202, 86%, 94%) 70px, transparent 50px);
+  color: hsl(200, 24%, 40%);
+  font-size: 16px;
+  padding-left: 10px;  
+}
+#term:focus{
+  background: linear-gradient(to left, hsl(61, 70%, 52%) 70px, transparent 50px);
+}
+
+.years {
+  position: absolute;
+  left: 325px;
+  top: 68%;
+  font-size: 17px;
+  color: hsl(200, 24%, 40%);
+  width: 50px;
+}
+
+#rate {
+  background: linear-gradient(to left, hsl(202, 86%, 94%) 50px, transparent 50px);
+  color: hsl(200, 24%, 40%);
+  font-size: 16px;
+  padding-left: 10px;  
+}
+#rate:focus{
+  background: linear-gradient(to left, hsl(61, 70%, 52%) 50px, transparent 50px);
+}
+.porcentage {
+  position: absolute;
+  left: 580px;
+  top: 68.5%;
+  font-size: 17px;
+  color: hsl(200, 24%, 40%);
+  width: 50px;
+}
+
 .mortgage-inputs label {
   font-size: 16px;
-  color: hsl(200, 26%, 54%);
+  color: hsl(200, 24%, 40%);
   margin-bottom: 10px;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.radio-container label {
+  font-size: 16px;
+}
+
+.radio-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  border: .5px solid hsl(200, 24%, 40%);
+  border-radius: 6px;
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+.radio-name:hover{
+  cursor: pointer;
+}
+.radio-name.active{
+  border: 2px solid hsl(61, 70%, 52%);
+  background-color: hsl(61, 55%, 85%);
+}
+
+button {
+  height: 55px;
+  width: 300px;
+  background-color: hsl(61, 70%, 52%);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 30px;
+  border: none;
+  border-radius: 30px;
+  padding-left: 35px;
+  color: hsl(202, 55%, 16%);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.calculator-img {
+  margin-right: 10px;
+}
+
+/*-------- Right Container ---------*/
+
+.right-container {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(202, 55%, 16%);
+  background-repeat: no-repeat;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 100px;
+}
+
+.top-text{
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.bottom-text{
+  text-align: center;
+  color: hsl(200, 26%, 54%);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 30px;
 }
