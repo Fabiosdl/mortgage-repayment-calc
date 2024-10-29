@@ -14,14 +14,13 @@ html, body {
   display: flex;
   background-color: hsl(202, 86%, 94%);
   padding: 150px;
-  /*overflow-y: auto;*/
 }
 
 .left-container, .right-container {
   display: flex;
   flex-direction: column;
   justify-content: top;
-  height: 100%;
+  height: auto;
 }
 
 .left-container {
@@ -61,9 +60,9 @@ html, body {
 }
 
 .pound {
-  position: absolute;
-  left: 200px;
-  top: 51%;
+  position: relative;
+  left: 20px;
+  top: 40px;
   font-size: 20px;
   color: hsl(202, 55%, 16%);
   width: 50px;
@@ -96,6 +95,23 @@ html, body {
   border: 2px solid hsl(61, 70%, 52%);
 }
 
+.input-field.error,
+.radio-name.error{
+  border: 2px solid hsl(4, 69%, 50%)  
+}
+.radio-name.interest.error{
+  margin-bottom: 20px;
+}
+
+.input-field.error + .error-validation,
+.radio-name.error + .error-validation {
+  display: block; /* Take up space when visible */
+}
+
+.input-field.inline{
+  margin-top: -30px;
+}
+
 .inline-input-container {
   display: flex;
   justify-content: space-between;
@@ -122,9 +138,10 @@ html, body {
 }
 
 .years {
-  position: absolute;
-  left: 325px;
-  top: 68%;
+  position: relative;
+  left: 150px;
+  top: 10px;
+  margin-top: -40px;
   font-size: 17px;
   color: hsl(200, 24%, 40%);
   width: 50px;
@@ -140,9 +157,9 @@ html, body {
   background: linear-gradient(to left, hsl(61, 70%, 52%) 50px, transparent 50px);
 }
 .porcentage {
-  position: absolute;
-  left: 580px;
-  top: 68.5%;
+  position: relative;
+  left: 170px;
+  top: 10px;
   font-size: 17px;
   color: hsl(200, 24%, 40%);
   width: 50px;
@@ -162,6 +179,7 @@ html, body {
 
 .radio-container label {
   font-size: 16px;
+  color:hsl(200, 24%, 40%);
 }
 
 .radio-name {
@@ -202,6 +220,13 @@ button {
 
 .calculator-img {
   margin-right: 10px;
+}
+
+.error-validation {
+  color: hsl(4, 69%, 50%);
+  font-size: 13px;
+  margin-top: -20px;
+  margin-bottom: 10px;
 }
 
 /*-------- Right Container ---------*/
