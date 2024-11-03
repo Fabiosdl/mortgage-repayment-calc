@@ -5,16 +5,23 @@ function App() {
 
   const [selectedOption, setSelectedOption] = useState(null);
 
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const handleRadioChange = (option) => {
+    
     setSelectedOption(option);
+    setFormState((prevFormState) => ({ ...prevFormState, radio: option}));
+
+    if (isSubmitted) {
+      setErrors((prevErrors) => ({ ...prevErrors, radio: null })); // Clear radio error when selected after submit
+    }
   };
 
   const [formState, setFormState] = useState({
     amount: '',
     term: '',
     rate: '',
-    repayment: '',
-    interest: '',
+    radio:'',
   });
 
   const [errors, setErrors] = useState({});
@@ -36,8 +43,15 @@ function App() {
         validationErrors[fieldKey] = 'This field is required';
       }
     });
-      
+
+    // Validate radio field separately
+  if (!selectedOption) {
+    validationErrors.radio = 'This field is required';
+  }
+
     setErrors(validationErrors);
+    setIsSubmitted(true);
+      
   };
 
   return (
@@ -49,10 +63,10 @@ function App() {
 
         <form className='mortgage-inputs' onSubmit={handleSubmit}>
           <div className='amount-container'>
-            <label for='amount'>Mortgage Amount</label>
+            <label for='amount' >Mortgage Amount</label>
             <span className='pound'>£</span>          
             <input type='text' id='amount' 
-            name='amount' className={`input-field ${errors.amount ? 'error' : ''}`}
+            name='amount' className={`input-field amount ${errors.amount ? 'error' : ''}`}
             value={formState.amount}
             onChange={handleChange}
             />
@@ -86,8 +100,7 @@ function App() {
               <label 
                 className={`radio-name ${selectedOption === 'repayment' ? 'active':''}
                             ${errors.interest && errors.repayment ? 'error' : ''}`}
-                onClick={() => handleRadioChange('repayment')}                
-                onSubmit={handleSubmit}
+                onClick={() => handleRadioChange('repayment')}    
                 >                
                 <input type='radio' id='repayment' name='repayment' value='1' 
                 checked={selectedOption === 'repayment'} 
@@ -99,12 +112,11 @@ function App() {
               className={`radio-name interest ${selectedOption === 'interest' ? 'active':''}
                           ${errors.interest && errors.repayment ? 'error' : ''}`}
               onClick={() => handleRadioChange('interest')}
-              onSubmit={handleSubmit}
               >
                 <input type='radio' id='interest' name='interest' value='2' checked={selectedOption === 'interest'} className='radio-input'/>
                 <span>Interest Rate</span>
               </label>
-              {errors.interest && errors.repayment && <span className='error-validation'>{errors.amount}</span> }
+              {isSubmitted && errors.radio && <span className='error-validation'>{errors.radio}</span> }
           </div>
 
           <button type='submit'>
@@ -123,5 +135,10 @@ function App() {
     </div>
   );
 }
+
+//conditional rendering
+/*
+ * send the code after conditional rendering and resume
+ */
 
 export default App;

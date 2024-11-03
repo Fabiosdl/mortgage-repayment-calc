@@ -13,7 +13,10 @@ html, body {
   height: 100vh;
   display: flex;
   background-color: hsl(202, 86%, 94%);
-  padding: 150px;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .left-container, .right-container {
@@ -62,7 +65,7 @@ html, body {
 .pound {
   position: relative;
   left: 20px;
-  top: 40px;
+  top: 10px;
   font-size: 20px;
   color: hsl(202, 55%, 16%);
   width: 50px;
@@ -95,17 +98,17 @@ html, body {
   border: 2px solid hsl(61, 70%, 52%);
 }
 
-.input-field.error,
-.radio-name.error{
-  border: 2px solid hsl(4, 69%, 50%)  
-}
-.radio-name.interest.error{
+.radio-name.interest {
   margin-bottom: 20px;
 }
 
 .input-field.error + .error-validation,
 .radio-name.error + .error-validation {
   display: block; /* Take up space when visible */
+}
+
+.input-field.amount{
+  margin-top: -30px;
 }
 
 .input-field.inline{
@@ -216,6 +219,10 @@ button {
   color: hsl(202, 55%, 16%);
   font-size: 17px;
   font-weight: 600;
+}
+
+button:hover{
+  cursor: pointer;
 }
 
 .calculator-img {
