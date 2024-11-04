@@ -43,12 +43,12 @@ html, body {
 .heading {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 .heading a{
   font-size: 16px;
   color: hsl(200, 24%, 40%);
-  margin-left: 100px;
+  margin-left: 65px;
 }
 
 .mortgage-inputs {
@@ -62,31 +62,38 @@ html, body {
   flex-direction: column;
 }
 
-.pound {
-  position: relative;
-  left: 20px;
-  top: 10px;
-  font-size: 20px;
-  color: hsl(202, 55%, 16%);
-  width: 50px;
-}
-
 #amount {  
   background: linear-gradient(to right, hsl(202, 86%, 94%) 50px, transparent 50px);
   font-size: 20px;
   color: hsl(202, 55%, 16%);
   padding-left: 70px;
+  margin-top: 5px;
 }
 
-#amount:focus {
+.pound {
+  position: relative;
+  left: 20px;
+  top: -40px;
+  font-size: 20px;
+  color: hsl(200, 24%, 40%);
+  width: 50px;
+}
+
+#amount:focus{
   background: linear-gradient(to right, hsl(61, 70%, 52%) 50px, transparent 50px);
+}
+#amount:focus + .pound {
+  color: hsl(202, 55%, 16%);
+}
+
+#amount .error-validation{
+  background: linear-gradient(to right, hsl(4, 69%, 50%), 50px, transparent 50px);
 }
 
 .input-field {
  height: 50px;
  border: 1px solid hsl(200, 24%, 40%);
- border-radius: 6px; 
- margin-bottom: 20px;
+ border-radius: 6px;
  outline: none; /* Removes default focus outline */
 }
 
@@ -107,14 +114,6 @@ html, body {
   display: block; /* Take up space when visible */
 }
 
-.input-field.amount{
-  margin-top: -30px;
-}
-
-.input-field.inline{
-  margin-top: -30px;
-}
-
 .inline-input-container {
   display: flex;
   justify-content: space-between;
@@ -132,18 +131,23 @@ html, body {
 
 #term {
   background: linear-gradient(to left, hsl(202, 86%, 94%) 70px, transparent 50px);
-  color: hsl(200, 24%, 40%);
+  color:hsl(202, 55%, 16%); 
   font-size: 16px;
-  padding-left: 10px;  
+  padding-left: 10px;
+  margin-top: 5px;  
 }
-#term:focus{
+
+#term:focus {
   background: linear-gradient(to left, hsl(61, 70%, 52%) 70px, transparent 50px);
+}
+#term:focus + .years{
+  color:hsl(202, 55%, 16%);
 }
 
 .years {
   position: relative;
-  left: 150px;
-  top: 10px;
+  left: 130px;
+  top: -45px;
   margin-top: -40px;
   font-size: 17px;
   color: hsl(200, 24%, 40%);
@@ -152,17 +156,27 @@ html, body {
 
 #rate {
   background: linear-gradient(to left, hsl(202, 86%, 94%) 50px, transparent 50px);
-  color: hsl(200, 24%, 40%);
+  color:hsl(202, 55%, 16%);
   font-size: 16px;
-  padding-left: 10px;  
+  padding-left: 10px;    
+  margin-top: 5px; 
 }
-#rate:focus{
+
+#rate:focus {
+  background: linear-gradient(to left, hsl(61, 70%, 52%) 50px, transparent 50px); 
+}
+#rate:focus + .porcentage{ 
+  color:hsl(202, 55%, 16%);
+}
+
+#rate .error-validation {
   background: linear-gradient(to left, hsl(61, 70%, 52%) 50px, transparent 50px);
 }
+
 .porcentage {
   position: relative;
-  left: 170px;
-  top: 10px;
+  left: 150px;
+  top: -45px;
   font-size: 17px;
   color: hsl(200, 24%, 40%);
   width: 50px;
@@ -203,6 +217,7 @@ html, body {
 .radio-name.active{
   border: 2px solid hsl(61, 70%, 52%);
   background-color: hsl(61, 55%, 85%);
+  color: hsl(202, 55%, 16%);
 }
 
 button {
@@ -239,18 +254,21 @@ button:hover{
 /*-------- Right Container ---------*/
 
 .right-container {
-  flex: 1.1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex: 1.1;  
   background-color: hsl(202, 55%, 16%);
   background-repeat: no-repeat;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 100px;
+  padding: 40px;
 }
 
+.initial-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .top-text{
   color: white;
   font-size: 25px;
@@ -264,4 +282,37 @@ button:hover{
   font-weight: 500;
   line-height: 1.5;
   margin: 30px;
+}
+
+.result-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: top;
+  color: white;
+}
+.result-container p{
+  font-size: 16px;
+  color: hsl(200, 26%, 54%);
+}
+
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: top;
+  background-color: hsl(202, 50%, 12%);
+  border-color: hsl(61, 70%, 52%);
+  border-top: 3px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.your-repayment{
+  color:hsl(200, 26%, 54%);
+  font-size: 12px;
+}
+.monthly-value{
+  color: hsl(61, 70%, 52%);
+  font-size: 30px;
 }
