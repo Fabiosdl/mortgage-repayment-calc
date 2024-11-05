@@ -84,7 +84,9 @@ html, body {
 
 .input-field.amount {  
   background: linear-gradient(to right, hsl(202, 86%, 94%) 50px, transparent 50px);
-  font-size: 20px;
+  font-family: 'Plus Jakarta Sans';
+  font-size: 17px;
+  font-weight: bold;
   color: hsl(202, 55%, 16%);
   padding-left: 70px;
   margin-top: 5px;
@@ -129,6 +131,7 @@ html, body {
 
 .inline-input{
   width: 45%;
+  margin-right: 5px;
 }
 
 .inline-input .error-validation {
@@ -145,8 +148,10 @@ html, body {
 
 .input-field.inline {
   color:hsl(202, 55%, 16%); 
-  font-size: 16px;
-  padding-left: 10px;
+  font-family: 'Plus Jakarta Sans';
+  font-size: 17px;
+  font-weight: bold;
+  padding-left: 15px;
   margin-top: 5px;  
 }
 
@@ -181,7 +186,7 @@ html, body {
 .years {
   display: block;
   position: relative;
-  left: 150px;
+  left: 170px;
   top: 0px;
   margin-top: -40px;
   font-size: 17px;
@@ -192,7 +197,7 @@ html, body {
 .porcentage {
   display: block;
   position: relative;
-  left: 175px;
+  left: 190px;
   top: -35px;
   font-size: 17px;
   color: hsl(200, 24%, 40%);
@@ -277,7 +282,7 @@ button:hover{
   margin-bottom: 10px;
 }
 
-/*-------- Right Container ---------*/
+/*-------- Right Container ------------------------------------------------------------*/
 
 .right-container {
   flex: 1.1;  
@@ -287,6 +292,10 @@ button:hover{
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 100px;
   padding: 40px;
+
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center;    /* Center content vertically */
 }
 
 .initial-container {
@@ -316,10 +325,18 @@ button:hover{
   justify-content: left;
   align-items: top;
   color: white;
+  margin-top: -130px;
 }
+
+.result-container h2{
+  font-size: 20px;
+}
+
 .result-container p{
-  font-size: 16px;
+  font-size: 14px;
   color: hsl(200, 26%, 54%);
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 .payment-container {
@@ -328,17 +345,34 @@ button:hover{
   justify-content: left;
   align-items: top;
   background-color: hsl(202, 50%, 12%);
-  border-color: hsl(61, 70%, 52%);
-  border-top: 3px;
   padding: 20px;
   margin-top: 20px;
+  
+  box-shadow:0 -4px 0 hsl(61, 70%, 52%, 100%);
+  border-radius: 8px;
 }
 
 .your-repayment{
   color:hsl(200, 26%, 54%);
   font-size: 12px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .monthly-value{
   color: hsl(61, 70%, 52%);
-  font-size: 30px;
+  font-size: 40px;
+}
+
+.payment-container hr{
+  width: 100%;
+  border: none;
+  height: 1px;
+  background-color: hsl(200, 26%, 54%);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.total-value{
+  margin-bottom: 20px;
 }

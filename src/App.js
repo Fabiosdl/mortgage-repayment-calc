@@ -78,9 +78,19 @@ function App() {
         monthlyPayment = amount * monthlyRate;
         totalPayment = monthlyPayment * years * 12 + amount;
       }
-        
-      setMonthlyRepayment(monthlyPayment.toFixed(2));// keep the result within 2 digits
-      setTotalRepayment(totalPayment.toFixed(2));
+      
+      monthlyPayment = monthlyPayment.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      totalPayment = totalPayment.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+      
+      setMonthlyRepayment(monthlyPayment);// keep the result within 2 digits
+      setTotalRepayment(totalPayment);
     }
   };
 
@@ -171,20 +181,21 @@ function App() {
         </form>       
         
       </div>
+
       <div className="right-container">
 
         {isSubmitted && Object.keys(errors).length === 0 ? (
           <div className='result-container'>  
-            <h2>Monthly Repayment</h2>
+            <h2>Your results</h2>
             <p>Your results are shown below based on the information you provided. 
               To adjust the results, edit the form and click “calculate repayments” again.</p>
             
             <div className='payment-container'>
               <span className='your-repayment'>Your monthly repayments</span>
-              <span className='monthly-value'><b>£{monthlyRepayment}</b></span>
+              <span className='monthly-value'><b>€{monthlyRepayment}</b></span>
               <hr/>
               <span className='your-repayment'>Total you'll repay over the term</span>
-              <span className='total-value'><b>£{totalRepayment}</b></span>
+              <span className='total-value'><b>€{totalRepayment}</b></span>
 
             </div>
             
