@@ -10,7 +10,7 @@ html, body {
 }
 
 .App-container{
-  height: 100vh;
+  height: auto;
   display: flex;
   background-color: hsl(202, 86%, 94%);
   padding-left: 150px;
@@ -57,12 +57,32 @@ html, body {
   max-width: 100%;
 }
 
+
+.input-field {
+  height: 50px;
+  border: 1px solid hsl(200, 24%, 40%);
+  border-radius: 6px;
+  outline: none; /* Removes default focus outline */
+ }
+ 
+ .input-field:hover{
+   cursor: pointer;
+ }
+ 
+ .input-field:focus{
+   border: 2px solid hsl(61, 70%, 52%);
+ }
+
+ .input-field.error {
+  border-color: hsl(4, 69%, 50%); /* Optional: Adjusts the border color to match */
+}
+
 .amount-container {
   display: flex;
   flex-direction: column;
 }
 
-#amount {  
+.input-field.amount {  
   background: linear-gradient(to right, hsl(202, 86%, 94%) 50px, transparent 50px);
   font-size: 20px;
   color: hsl(202, 55%, 16%);
@@ -78,6 +98,9 @@ html, body {
   color: hsl(200, 24%, 40%);
   width: 50px;
 }
+.pound.error{
+  color: white;
+}
 
 #amount:focus{
   background: linear-gradient(to right, hsl(61, 70%, 52%) 50px, transparent 50px);
@@ -86,32 +109,17 @@ html, body {
   color: hsl(202, 55%, 16%);
 }
 
-#amount .error-validation{
-  background: linear-gradient(to right, hsl(4, 69%, 50%), 50px, transparent 50px);
-}
-
-.input-field {
- height: 50px;
- border: 1px solid hsl(200, 24%, 40%);
- border-radius: 6px;
- outline: none; /* Removes default focus outline */
-}
-
-.input-field:hover{
-  cursor: pointer;
-}
-
-.input-field:focus{
-  border: 2px solid hsl(61, 70%, 52%);
-}
-
 .radio-name.interest {
   margin-bottom: 20px;
 }
 
-.input-field.error + .error-validation,
-.radio-name.error + .error-validation {
-  display: block; /* Take up space when visible */
+.input-field.error .error-validation,
+.radio-name.error .error-validation {
+  display: block; /* puts the error message as a block with the input fields */
+}
+
+.input-field.error{  
+  background: linear-gradient(to right, hsl(4, 69%, 50%) 50px, transparent 50px);
 }
 
 .inline-input-container {
@@ -123,63 +131,80 @@ html, body {
   width: 45%;
 }
 
-.inline-input label,
-.inline-input input {
-  display: block;
-  width: 100%;
+.inline-input .error-validation {
+  display: block; /* puts the error message as a block with the input fields */
 }
 
-#term {
-  background: linear-gradient(to left, hsl(202, 86%, 94%) 70px, transparent 50px);
+.error-validation-term{
+  display: block;
+  color: hsl(4, 69%, 50%);
+  font-size: 13px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.input-field.inline {
   color:hsl(202, 55%, 16%); 
   font-size: 16px;
   padding-left: 10px;
   margin-top: 5px;  
 }
 
-#term:focus {
+.input-field.term {
+  background: linear-gradient(to left, hsl(202, 86%, 94%) 70px, transparent 50px);
+}
+
+.input-field.rate {
+  background: linear-gradient(to left, hsl(202, 86%, 94%) 50px, transparent 50px);
+}
+
+.input-field.term:focus {
   background: linear-gradient(to left, hsl(61, 70%, 52%) 70px, transparent 50px);
 }
-#term:focus + .years{
+.input-field.rate:focus {
+  background: linear-gradient(to left, hsl(61, 70%, 52%) 50px, transparent 50px); 
+}
+
+.input-field.term.error{
+  background: linear-gradient(to left, hsl(4, 69%, 50%) 70px, transparent 50px);
+}
+
+.input-field.rate.error{
+  background: linear-gradient(to left, hsl(4, 69%, 50%) 50px, transparent 50px);
+}
+
+.input-field.term:focus + .years,
+.input-field.rate:focus + .porcentage{
   color:hsl(202, 55%, 16%);
 }
 
 .years {
+  display: block;
   position: relative;
-  left: 130px;
-  top: -45px;
+  left: 150px;
+  top: 0px;
   margin-top: -40px;
   font-size: 17px;
   color: hsl(200, 24%, 40%);
   width: 50px;
 }
 
-#rate {
-  background: linear-gradient(to left, hsl(202, 86%, 94%) 50px, transparent 50px);
-  color:hsl(202, 55%, 16%);
-  font-size: 16px;
-  padding-left: 10px;    
-  margin-top: 5px; 
-}
-
-#rate:focus {
-  background: linear-gradient(to left, hsl(61, 70%, 52%) 50px, transparent 50px); 
-}
-#rate:focus + .porcentage{ 
-  color:hsl(202, 55%, 16%);
-}
-
-#rate .error-validation {
-  background: linear-gradient(to left, hsl(61, 70%, 52%) 50px, transparent 50px);
-}
-
 .porcentage {
+  display: block;
   position: relative;
-  left: 150px;
-  top: -45px;
+  left: 175px;
+  top: -35px;
   font-size: 17px;
   color: hsl(200, 24%, 40%);
   width: 50px;
+}
+
+.years.error {
+  color: white;
+}
+
+.porcentage.error {
+  color: white;
 }
 
 .mortgage-inputs label {
@@ -227,7 +252,8 @@ button {
   display: flex;
   justify-content: start;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   border: none;
   border-radius: 30px;
   padding-left: 35px;

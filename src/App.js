@@ -111,29 +111,29 @@ function App() {
             value={formState.amount}
             onChange={handleChange}
             />
-            <span className='pound'>£</span>
+            <span className={`pound ${errors.amount ? 'error' : ''}`}>€</span>
             {errors.amount && <span className='error-validation'>{errors.amount}</span> }
           </div>
   
           <div className='inline-input-container'>
             <div className='inline-input'>
               <label for='term'>Mortgage Term</label>          
-              <input type='text' id='term' name='term' 
-              className={`input-field inline ${errors.term ? 'error' : ''}`}
+              <input type='text' id={`term`}  name='term' 
+              className={`input-field inline term ${errors.term ? 'error' : ''}`}
               value={formState.term}
               onChange={handleChange}
               />              
-              <span className='years'>years</span>  
-              {errors.term && <span className='error-validation'>{errors.term}</span> }
+              <span className={`years ${errors.term ? 'error' : ''}`}>years</span>  
+              {errors.term && <span className='error-validation-term'>{errors.term}</span> }
             </div>
             <div className='inline-input'>  
               <label for='rate'>Interest Rate</label>
               <input type='text' id='rate' name='rate' 
-              className={`input-field inline ${errors.rate ? 'error' : ''}`}
+              className={`input-field inline rate ${errors.rate ? 'error' : ''}`}
               value={formState.rate}
               onChange={handleChange}
               />
-              <span className='porcentage'>%</span>
+              <span className={`porcentage ${errors.rate ? 'error' : ''}`}>%</span>
               {errors.rate && <span className='error-validation'>{errors.rate}</span> }
             </div>
           </div>
