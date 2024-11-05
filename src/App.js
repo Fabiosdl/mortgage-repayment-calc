@@ -4,10 +4,7 @@ import './App.css';
 function App() {
 
   const [selectedOption, setSelectedOption] = useState(null);
-
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // to store the monthly repayment result
   const [monthlyRepayment, setMonthlyRepayment] = useState(0);
   const [totalRepayment, setTotalRepayment] = useState(0);
 
@@ -25,7 +22,6 @@ function App() {
     amount: '',
     term: '',
     rate: '',
-    radio:'',
   });
 
   const [errors, setErrors] = useState({});
@@ -96,117 +92,119 @@ function App() {
 
   return (
     <div className="App-container">
-      <div className="left-container">
-        <div className='heading'>
-          <p>Mortgage Calculator <a href='#' 
-            onClick={(e) => {
-              e.preventDefault();
-              setIsSubmitted(false);
-              setSelectedOption(null);
-              setFormState(
-                {amount: '',
-                term: '',
-                rate: '',
-                radio:''});                              
-              setErrors({}); 
-              }}>Clear All</a></p>
-        </div>
-
-        <form className='mortgage-inputs' onSubmit={handleSubmit}>
-          <div className='amount-container'>
-            <label for='amount' >Mortgage Amount</label>
-                      
-            <input type='text' id='amount' 
-            name='amount' className={`input-field amount ${errors.amount ? 'error' : ''}`}
-            value={formState.amount}
-            onChange={handleChange}
-            />
-            <span className={`pound ${errors.amount ? 'error' : ''}`}>€</span>
-            {errors.amount && <span className='error-validation'>{errors.amount}</span> }
+      <div className='background-container'>
+        <div className="left-container">
+          <div className='heading'>
+            <p>Mortgage Calculator <a href='#' 
+              onClick={(e) => {
+                e.preventDefault();
+                setIsSubmitted(false);
+                setSelectedOption(null);
+                setFormState(
+                  {amount: '',
+                  term: '',
+                  rate: '',
+                  radio:''});                              
+                setErrors({}); 
+                }}>Clear All</a></p>
           </div>
-  
-          <div className='inline-input-container'>
-            <div className='inline-input'>
-              <label for='term'>Mortgage Term</label>          
-              <input type='text' id={`term`}  name='term' 
-              className={`input-field inline term ${errors.term ? 'error' : ''}`}
-              value={formState.term}
-              onChange={handleChange}
-              />              
-              <span className={`years ${errors.term ? 'error' : ''}`}>years</span>  
-              {errors.term && <span className='error-validation-term'>{errors.term}</span> }
-            </div>
-            <div className='inline-input'>  
-              <label for='rate'>Interest Rate</label>
-              <input type='text' id='rate' name='rate' 
-              className={`input-field inline rate ${errors.rate ? 'error' : ''}`}
-              value={formState.rate}
+
+          <form className='mortgage-inputs' onSubmit={handleSubmit}>
+            <div className='amount-container'>
+              <label for='amount' >Mortgage Amount</label>
+                        
+              <input type='text' id='amount' 
+              name='amount' className={`input-field amount ${errors.amount ? 'error' : ''}`}
+              value={formState.amount}
               onChange={handleChange}
               />
-              <span className={`porcentage ${errors.rate ? 'error' : ''}`}>%</span>
-              {errors.rate && <span className='error-validation'>{errors.rate}</span> }
+              <span className={`pound ${errors.amount ? 'error' : ''}`}>€</span>
+              {errors.amount && <span className='error-validation'>{errors.amount}</span> }
             </div>
-          </div>
-
-          <div className='radio-container'>
-            <label for='type'>Mortgage Type</label>
-              <label 
-                className={`radio-name ${selectedOption === 'repayment' ? 'active':''}
-                            ${errors.interest && errors.repayment ? 'error' : ''}`}
-                onClick={() => handleRadioChange('repayment')}    
-                >                
-                <input type='radio' id='repayment' name='repayment' value='1' 
-                checked={selectedOption === 'repayment'} 
-                className='radio-input'/> 
-                <span>Repayment</span>
-              </label>
-
-              <label 
-              className={`radio-name interest ${selectedOption === 'interest' ? 'active':''}
-                          ${errors.radio ? 'error' : ''}`}
-              onClick={() => handleRadioChange('interest')}
-              >
-                <input type='radio' id='interest' name='interest' value='2' 
-                checked={selectedOption === 'interest'} 
-                className='radio-input'/>
-                <span>Interest Rate</span>
-              </label>
-              {isSubmitted && errors.radio && <span className='error-validation'>{errors.radio}</span>}
-          </div>
-
-          <button type='submit'>
-            <img className="calculator-img" src={`${process.env.PUBLIC_URL}/images/icon-calculator.svg`} alt='Icon calculator'/>
-            Calculate Repayments
-          </button>                    
-        </form>       
-        
-      </div>
-
-      <div className="right-container">
-
-        {isSubmitted && Object.keys(errors).length === 0 ? (
-          <div className='result-container'>  
-            <h2>Your results</h2>
-            <p>Your results are shown below based on the information you provided. 
-              To adjust the results, edit the form and click “calculate repayments” again.</p>
-            
-            <div className='payment-container'>
-              <span className='your-repayment'>Your monthly repayments</span>
-              <span className='monthly-value'><b>€{monthlyRepayment}</b></span>
-              <hr/>
-              <span className='your-repayment'>Total you'll repay over the term</span>
-              <span className='total-value'><b>€{totalRepayment}</b></span>
-
+    
+            <div className='inline-input-container'>
+              <div className='inline-input'>
+                <label for='term'>Mortgage Term</label>          
+                <input type='text' id={`term`}  name='term' 
+                className={`input-field inline term ${errors.term ? 'error' : ''}`}
+                value={formState.term}
+                onChange={handleChange}
+                />              
+                <span className={`years ${errors.term ? 'error' : ''}`}>years</span>  
+                {errors.term && <span className='error-validation-term'>{errors.term}</span> }
+              </div>
+              <div className='inline-input'>  
+                <label for='rate'>Interest Rate</label>
+                <input type='text' id='rate' name='rate' 
+                className={`input-field inline rate ${errors.rate ? 'error' : ''}`}
+                value={formState.rate}
+                onChange={handleChange}
+                />
+                <span className={`porcentage ${errors.rate ? 'error' : ''}`}>%</span>
+                {errors.rate && <span className='error-validation'>{errors.rate}</span> }
+              </div>
             </div>
-            
-          </div> ) : (
-          <div className='initial-container'>  
-            <img src={`${process.env.PUBLIC_URL}/images/illustration-empty.svg`} alt='background icon'/>
-            <span className='top-text'>Results shown here</span>
-            <span className='bottom-text'>Complete the form and click “calculate repayments” 
-              to see what your monthly repayments would be.</span>
-          </div>
-          )}
+
+            <div className='radio-container'>
+              <label for='type'>Mortgage Type</label>
+                <label 
+                  className={`radio-name ${selectedOption === 'repayment' ? 'active':''}
+                              ${errors.interest && errors.repayment ? 'error' : ''}`}
+                  onClick={() => handleRadioChange('repayment')}    
+                  >                
+                  <input type='radio' id='repayment' name='repayment' value='1' 
+                  checked={selectedOption === 'repayment'} 
+                  className='radio-input'/> 
+                  <span>Repayment</span>
+                </label>
+
+                <label 
+                className={`radio-name interest ${selectedOption === 'interest' ? 'active':''}
+                            ${errors.radio ? 'error' : ''}`}
+                onClick={() => handleRadioChange('interest')}
+                >
+                  <input type='radio' id='interest' name='interest' value='2' 
+                  checked={selectedOption === 'interest'} 
+                  className='radio-input'/>
+                  <span>Interest Rate</span>
+                </label>
+                {isSubmitted && errors.radio && <span className='error-validation'>{errors.radio}</span>}
+            </div>
+
+            <button type='submit'>
+              <img className="calculator-img" src={`${process.env.PUBLIC_URL}/images/icon-calculator.svg`} alt='Icon calculator'/>
+              Calculate Repayments
+            </button>                    
+          </form>       
+          
+        </div>
+
+        <div className="right-container">
+
+          {isSubmitted && Object.keys(errors).length === 0 ? (
+            <div className='result-container'>  
+              <h2>Your results</h2>
+              <p>Your results are shown below based on the information you provided. 
+                To adjust the results, edit the form and click “calculate repayments” again.</p>
+              
+              <div className='payment-container'>
+                <span className='your-repayment'>Your monthly repayments</span>
+                <span className='monthly-value'><b>€{monthlyRepayment}</b></span>
+                <hr/>
+                <span className='your-repayment'>Total you'll repay over the term</span>
+                <span className='total-value'><b>€{totalRepayment}</b></span>
+
+              </div>
+              
+            </div> ) : (
+            <div className='initial-container'>  
+              <img src={`${process.env.PUBLIC_URL}/images/illustration-empty.svg`} alt='background icon'/>
+              <span className='top-text'>Results shown here</span>
+              <span className='bottom-text'>Complete the form and click “calculate repayments” 
+                to see what your monthly repayments would be.</span>
+            </div>
+            )}
+        </div>
       </div>
     </div>
   );
