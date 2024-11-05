@@ -197,7 +197,7 @@ html, body {
 .porcentage {
   display: block;
   position: relative;
-  left: 190px;
+  left: 185px;
   top: -35px;
   font-size: 17px;
   color: hsl(200, 24%, 40%);
