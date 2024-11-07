@@ -40,7 +40,7 @@ html, body {
   font-size: 25px;
   font-weight: 600;
   align-items:start;
-  padding-left: 30px;
+  padding: 30px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
   color: hsl(202, 55%, 16%);
@@ -51,22 +51,27 @@ html, body {
   justify-content: space-between;
   margin-bottom: 15px;
 }
+
+.heading p {
+  margin-top: 0;
+}
+
 .heading a{
+  margin-left: 90px;
+  margin-top: 10px;
   font-size: 16px;
   color: hsl(200, 24%, 40%);
-  margin-left: 80px;
 }
 
 .mortgage-inputs {
   display: flex;
   flex-direction: column;
-  width: 92%;
+  width: 100%;
 }
 
 .amount-container {
   display: flex;
   flex-direction: column;
-  width: 103%;
 }
 
 .input-field {
@@ -129,15 +134,24 @@ html, body {
 .inline-input-container {
   display: flex;
   justify-content: space-between;
-  gap: 22px;
+  gap: 20px;
 }
 
-.inline-input .error-validation {
+.inline-input + .error-validation {
   display: block; /* puts the error message as a block with the input fields */
+}
+.inline-input + .error-validation-term {
+  display: block;
+}
+
+.error-validation {
+  color: hsl(4, 69%, 50%);
+  font-size: 13px;
+  margin-top: -20px;
+  margin-bottom: 10px;
 }
 
 .error-validation-term{
-  display: block;
   color: hsl(4, 69%, 50%);
   font-size: 13px;
   margin-top: 20px;
@@ -150,7 +164,7 @@ html, body {
   font-size: 17px;
   font-weight: bold;
   padding-left: 15px;
-  width: 94%;
+  width: 95%;
   margin-top: 5px;  
 }
 
@@ -182,22 +196,23 @@ html, body {
   color:hsl(202, 55%, 16%);
 }
 
-.years {
-  display: block;
+.inline-wrapper{
   position: relative;
-  left: 140px;
-  top: 5px;
-  margin-top: -40px;
+}
+
+.years {
+  position: absolute;
+  right: 0;
+  transform: translateY(-37px);
   font-size: 17px;
   color: hsl(200, 24%, 40%);
   width: 50px;
 }
 
 .porcentage {
-  display: block;
-  position: relative;
-  left: 150px;
-  top: -35px;
+  position: absolute;
+  right:-10%;
+  transform: translateY(-35px);
   font-size: 17px;
   font-weight: bold;
   color: hsl(200, 24%, 40%);
@@ -222,6 +237,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: start;
+  margin-top: 30px;
 }
 
 .radio-container label {
@@ -273,13 +289,6 @@ button:hover{
 
 .calculator-img {
   margin-right: 10px;
-}
-
-.error-validation {
-  color: hsl(4, 69%, 50%);
-  font-size: 13px;
-  margin-top: -20px;
-  margin-bottom: 10px;
 }
 
 /*-------- Right Container ------------------------------------------------------------*/
@@ -347,7 +356,6 @@ button:hover{
   background-color: hsl(202, 50%, 12%);
   padding: 20px;
   margin-top: 20px;
-  
   box-shadow:0 -4px 0 hsl(61, 70%, 52%, 100%);
   border-radius: 8px;
 }
@@ -375,4 +383,145 @@ button:hover{
 
 .total-value{
   margin-bottom: 20px;
+}
+
+/*------- Phone version -----------------------------------------*/
+
+@media (max-width: 768px) {
+  .App-container {
+    flex-direction: column; /* Stack the containers vertically */
+    padding: 0;
+    margin: 0;
+  }
+
+  .background-container {
+    flex-direction: column;
+  }
+
+  .left-container, .right-container {
+    flex: none;
+    width: fit-content; 
+    padding: 20px; 
+    margin: 0;
+    border: none;
+    border-radius: 0 0 0 0;
+  }
+
+  .left-container {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(0, 0%, 100%);
+    font-size: 18px; 
+  }
+
+  .right-container {
+    background-color: hsl(202, 55%, 16%); 
+  }
+
+  .amount-container{
+    width: 100%;
+  }
+
+  .inline-input-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .input-field.rate,
+  .input-field.term{
+    margin-top: 12px;
+  }
+
+
+  .years{
+    right: 0px;
+    top: 60px;
+  }
+
+  .porcentage{
+    right: -20px;
+    top: 60px;
+  }
+
+  .heading {
+    display: flex;
+    flex-direction: column; /* Alinha verticalmente */
+    align-items: flex-start; /* Alinha à esquerda no container */
+    width: 100%;
+  }
+
+  .heading p {
+    font-size: 20px; 
+  }
+
+  .heading a {
+    font-size: 14px;
+    margin: 0 0 10px 0; 
+  }
+
+  button {
+    
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .result-container{
+    margin-top: 20px;
+  }
+
+  .calculator-img {
+    margin-right: 5px; /* Adjust image margin for mobile */
+  }
+
+  .error-validation {
+    font-size: 12px; /* Reduce font size for mobile error messages */
+  }
+
+  .error-validation-term{
+    font-size: 12px;
+  }
+
+  .radio-container {
+    margin-top: 20px;
+    width: 95%; /* Adjust spacing for radio buttons */
+  }
+
+  .radio-name {
+    font-size: 16px; /* Adjust radio button font size */
+    padding-left: 15px;
+    height: 45px; /* Make radio buttons a little smaller */
+  }
+
+  .radio-name.active {
+    border: 2px solid hsl(61, 70%, 52%);
+    background-color: hsl(61, 55%, 85%);
+    color: hsl(202, 55%, 16%);
+  }
+
+  .result-container h2 {
+    font-size: 18px; /* Adjust result heading font size */
+  }
+
+  .result-container p {
+    font-size: 12px; /* Adjust result paragraph font size */
+  }
+
+  .payment-container {
+    padding: 15px; /* Adjust padding for the payment container */
+  }
+
+  .monthly-value {
+    font-size: 32px; /* Adjust the font size for monthly value */
+  }
+
+  .total-value {
+    font-size: 18px; /* Adjust the font size for total value */
+  }
 }

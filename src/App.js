@@ -95,7 +95,7 @@ function App() {
       <div className='background-container'>
         <div className="left-container">
           <div className='heading'>
-            <p>Mortgage Calculator <a href='#' 
+            <p>Mortgage Calculator</p> <a href='#' 
               onClick={(e) => {
                 e.preventDefault();
                 setIsSubmitted(false);
@@ -106,7 +106,7 @@ function App() {
                   rate: '',
                   radio:''});                              
                 setErrors({}); 
-                }}>Clear All</a></p>
+                }}>Clear All</a>
           </div>
 
           <form className='mortgage-inputs' onSubmit={handleSubmit}>
@@ -124,24 +124,28 @@ function App() {
     
             <div className='inline-input-container'>
               <div className='inline-input'>
-                <label for='term'>Mortgage Term</label>          
-                <input type='text' id={`term`}  name='term' 
-                className={`input-field inline term ${errors.term ? 'error' : ''}`}
-                value={formState.term}
-                onChange={handleChange}
-                />              
-                <span className={`years ${errors.term ? 'error' : ''}`}>years</span>  
-                {errors.term && <span className='error-validation-term'>{errors.term}</span> }
+                <label for='term'>Mortgage Term</label>         
+                <div className='inline-wrapper'>
+                  <input type='text' id={`term`}  name='term' 
+                  className={`input-field inline term ${errors.term ? 'error' : ''}`}
+                  value={formState.term}
+                  onChange={handleChange}
+                  />              
+                  <span className={`years ${errors.term ? 'error' : ''}`}>years</span>
+                  {errors.term && <span className='error-validation-term'>{errors.term}</span> }
+                </div>
               </div>
               <div className='inline-input'>  
                 <label for='rate'>Interest Rate</label>
-                <input type='text' id='rate' name='rate' 
-                className={`input-field inline rate ${errors.rate ? 'error' : ''}`}
-                value={formState.rate}
-                onChange={handleChange}
-                />
-                <span className={`porcentage ${errors.rate ? 'error' : ''}`}>%</span>
-                {errors.rate && <span className='error-validation'>{errors.rate}</span> }
+                <div className='inline-wrapper'>
+                  <input type='text' id='rate' name='rate' 
+                  className={`input-field inline rate ${errors.rate ? 'error' : ''}`}
+                  value={formState.rate}
+                  onChange={handleChange}
+                  />
+                  <span className={`porcentage ${errors.rate ? 'error' : ''}`}>%</span>
+                  {errors.rate && <span className='error-validation'>{errors.rate}</span> }
+                </div>
               </div>
             </div>
 
