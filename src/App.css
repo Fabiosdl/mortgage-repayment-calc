@@ -404,6 +404,7 @@ button:hover{
   .left-container, .right-container {
     flex: none;
     width: auto; 
+    min-width: 280px;
     padding: 20px; 
     margin: 0;
     border: none;
@@ -431,7 +432,7 @@ button:hover{
   }
 
   .input-field.inline{
-    width: 96%;
+    width: 94%;
   }
 
   .input-field.rate,
@@ -441,13 +442,13 @@ button:hover{
 
 
   .years{
-    right: 0px;
-    top: 65px;
+    right: 5px;
+    top: 62px;
   }
 
   .porcentage{
-    right: -25px;
-    top: 65px;
+    right: -18px;
+    top: 62px;
   }
 
   .heading {
