@@ -49,6 +49,7 @@ html, body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .heading p {
@@ -56,7 +57,6 @@ html, body {
 }
 
 .heading a{
-  margin-left: 90px;
   margin-top: 10px;
   font-size: 16px;
   color: hsl(200, 24%, 40%);
@@ -65,12 +65,12 @@ html, body {
 .mortgage-inputs {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 .amount-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .input-field {
@@ -99,8 +99,8 @@ html, body {
 
 .pound {
   position: relative;
-  left: 20px;
-  top: -35px;
+  left: 18px;
+  top: -37px;
   font-size: 20px;
   color: hsl(200, 24%, 40%);
   width: 50px;
@@ -109,10 +109,10 @@ html, body {
   color: white;
 }
 
-#amount:focus{
+.input-field.amount:focus{
   background: linear-gradient(to right, hsl(61, 70%, 52%) 50px, transparent 50px);
 }
-#amount:focus + .pound {
+.input-field.amount:focus + .pound {
   color: hsl(202, 55%, 16%);
 }
 
@@ -163,7 +163,7 @@ html, body {
   font-size: 17px;
   font-weight: bold;
   padding-left: 15px;
-  width: 95%;
+  width: 91%;
   margin-top: 5px;  
 }
 
@@ -244,16 +244,19 @@ html, body {
   color:hsl(200, 24%, 40%);
 }
 
+.radio-input {
+  transform: scale(1.25);
+  margin: 15px;
+}
+
 .radio-name {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
   font-size: 19px;
-  border: .5px solid hsl(200, 24%, 40%);
+  border: 1px solid hsl(200, 24%, 40%);
   border-radius: 6px;
   width: 100%;
   height: 50px;
-  padding-left: 10px;
   margin-bottom: 10px;
 }
 .radio-name:hover{
@@ -394,12 +397,13 @@ button:hover{
   }
 
   .background-container {
-    flex-direction: column;
+    flex-direction: column;    
+    border-radius: 0 0 0 0;
   }
 
   .left-container, .right-container {
     flex: none;
-    width: fit-content; 
+    width: auto; 
     padding: 20px; 
     margin: 0;
     border: none;
@@ -407,12 +411,9 @@ button:hover{
   }
 
   .left-container {
-    width: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: hsl(0, 0%, 100%);
     font-size: 18px; 
+    display: block;
   }
 
   .right-container {
@@ -427,6 +428,10 @@ button:hover{
     display: flex;
     flex-direction: column;
     width: 100%;
+  }
+
+  .input-field.inline{
+    width: 96%;
   }
 
   .input-field.rate,
@@ -489,13 +494,13 @@ button:hover{
 
   .radio-container {
     margin-top: 20px;
-    width: 95%; 
+    width: 100%; 
   }
 
   .radio-name {
-    font-size: 16px; 
-    padding-left: 15px;
-    height: 45px; 
+    font-size: 16px;
+    height: 45px;
+    width: 100%; 
   }
 
   .radio-name.active {
